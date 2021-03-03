@@ -14,12 +14,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val todoRepository: TodoRepository
+    private val todoRepository: TodoRepository,
+    private val resourceProvider: ResourceProvider
 ) : ViewModel() {
 
     private val disposables = CompositeDisposable()
-
-    internal var resourceProvider: ResourceProvider? = null
 
     private val _currentList = MediatorLiveData<List<Todo>>()
     val currentList: LiveData<List<Todo>> = _currentList

@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.becooni.todoapp.R
 import com.becooni.todoapp.databinding.ActivityMainBinding
-import com.becooni.todoapp.provider.ResourceProviderImpl
 import com.google.android.material.tabs.TabLayout
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -28,8 +27,6 @@ class MainActivity : AppCompatActivity() {
 
         initEditTextAction()
         initTabLayout()
-
-        viewModel.resourceProvider = ResourceProviderImpl(this)
     }
 
     private fun initEditTextAction() {

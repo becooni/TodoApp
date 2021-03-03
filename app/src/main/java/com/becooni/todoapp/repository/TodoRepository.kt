@@ -2,8 +2,9 @@ package com.becooni.todoapp.repository
 
 import com.becooni.todoapp.model.Todo
 import com.becooni.todoapp.persistence.TodoDao
+import javax.inject.Inject
 
-class TodoRepository(
+class TodoRepository @Inject constructor(
     private val todoDao: TodoDao
 ) : Repository {
 

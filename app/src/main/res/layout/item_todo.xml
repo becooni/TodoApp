@@ -9,7 +9,7 @@
 
         <variable
             name="item"
-            type="com.becooni.todoapp.repository.source.entity.Todo"
+            type="com.becooni.todoapp.model.Todo"
             />
 
         <variable

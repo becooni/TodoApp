@@ -3,15 +3,18 @@ package com.becooni.todoapp.ui
 import androidx.lifecycle.*
 import com.becooni.todoapp.R
 import com.becooni.todoapp.model.Todo
-import com.becooni.todoapp.repository.Repository
 import com.becooni.todoapp.provider.ResourceProvider
+import com.becooni.todoapp.repository.TodoRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
-class MainViewModel(
-    private val repository: Repository
+@HiltViewModel
+class MainViewModel @Inject constructor(
+    private val todoRepository: TodoRepository
 ) : ViewModel() {
 
     private val disposables = CompositeDisposable()
@@ -45,7 +48,7 @@ class MainViewModel(
     private val currentTabType = MutableLiveData(TabType.ALL)
 
     init {
-        repository.getAll()
+        todoRepository.getAll()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
@@ -69,7 +72,7 @@ class MainViewModel(
                 it.copy(completed = isChecked)
             } ?: return@observeForever
 
-            repository.update(*updateItems.toTypedArray())
+            todoRepository.update(*updateItems.toTypedArray())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
@@ -112,7 +115,7 @@ class MainViewModel(
 
         val newItem = Todo(text = text.toString())
 
-        repository.insert(newItem)
+        todoRepository.insert(newItem)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
@@ -126,7 +129,7 @@ class MainViewModel(
     }
 
     internal fun onTodoRemove(item: Todo) {
-        repository.delete(item)
+        todoRepository.delete(item)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
@@ -148,7 +151,7 @@ class MainViewModel(
 
         val updateItem = item.copy(text = text.toString())
 
-        repository.update(updateItem)
+        todoRepository.update(updateItem)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
@@ -165,7 +168,7 @@ class MainViewModel(
     internal fun onCheckClick(item: Todo) {
         val updateItem = item.copy(completed = item.completed.not())
 
-        repository.update(updateItem)
+        todoRepository.update(updateItem)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
@@ -182,7 +185,7 @@ class MainViewModel(
     internal fun onClearCompletedClick() {
         val items = _originList.value?.filter { it.completed } ?: return
 
-        repository.delete(*items.toTypedArray())
+        todoRepository.delete(*items.toTypedArray())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(

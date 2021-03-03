@@ -1,9 +1,9 @@
-package com.becooni.todoapp.ext
+package com.becooni.todoapp.extentions
 
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.becooni.todoapp.ui.MainViewModel
-import com.becooni.todoapp.data.Todo
+import com.becooni.todoapp.model.Todo
 import com.becooni.todoapp.ui.TodoAdapter
 
 object RecyclerViewExt {

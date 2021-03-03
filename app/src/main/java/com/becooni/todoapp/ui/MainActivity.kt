@@ -9,9 +9,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.room.Room
 import com.becooni.todoapp.R
-import com.becooni.todoapp.data.TodoRepositoryImpl
-import com.becooni.todoapp.data.source.local.AppDatabase
-import com.becooni.todoapp.data.source.local.TodoLocalDataSource
+import com.becooni.todoapp.repository.TodoRepository
+import com.becooni.todoapp.persistence.AppDatabase
 import com.becooni.todoapp.databinding.ActivityMainBinding
 import com.becooni.todoapp.provider.ResourceProviderImpl
 import com.google.android.material.tabs.TabLayout
@@ -29,7 +28,7 @@ class MainActivity : AppCompatActivity() {
             @Suppress("UNCHECKED_CAST")
             override fun <T : ViewModel?> create(modelClass: Class<T>) =
                 MainViewModel(
-                    TodoRepositoryImpl(
+                    TodoRepository(
                         TodoLocalDataSource(
                             Room.databaseBuilder(
                                 applicationContext,

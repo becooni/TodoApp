@@ -1,4 +1,4 @@
-package com.becooni.todoapp.ext
+package com.becooni.todoapp.extentions
 
 import android.view.View
 import androidx.core.view.isVisible

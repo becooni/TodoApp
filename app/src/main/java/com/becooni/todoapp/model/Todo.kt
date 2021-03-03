@@ -1,4 +1,4 @@
-package com.becooni.todoapp.data
+package com.becooni.todoapp.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

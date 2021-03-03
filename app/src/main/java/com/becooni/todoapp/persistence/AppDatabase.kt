@@ -1,9 +1,8 @@
-package com.becooni.todoapp.data.source.local
+package com.becooni.todoapp.persistence
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.becooni.todoapp.data.Todo
-import com.becooni.todoapp.data.TodoDao
+import com.becooni.todoapp.model.Todo
 
 @Database(entities = [Todo::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {

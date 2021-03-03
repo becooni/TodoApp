@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.becooni.todoapp.R
-import com.becooni.todoapp.data.Todo
+import com.becooni.todoapp.model.Todo
 import com.becooni.todoapp.databinding.ItemTodoBinding
 
 class TodoAdapter : ListAdapter<Todo, TodoAdapter.ViewHolder>(Companion) {

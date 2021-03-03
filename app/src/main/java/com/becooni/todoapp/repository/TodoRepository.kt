@@ -1,12 +1,11 @@
-package com.becooni.todoapp.data.source.local
+package com.becooni.todoapp.repository
 
-import com.becooni.todoapp.data.Todo
-import com.becooni.todoapp.data.TodoDao
-import com.becooni.todoapp.data.source.TodoDataSource
+import com.becooni.todoapp.model.Todo
+import com.becooni.todoapp.persistence.TodoDao
 
-class TodoLocalDataSource(
+class TodoRepository(
     private val todoDao: TodoDao
-) : TodoDataSource {
+) : Repository {
 
     override fun getAll() = todoDao.getAll()
 

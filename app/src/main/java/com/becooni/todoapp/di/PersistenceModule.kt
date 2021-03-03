@@ -2,7 +2,7 @@ package com.becooni.todoapp.di
 
 import android.content.Context
 import androidx.room.Room
-import com.becooni.todoapp.data.source.local.AppDatabase
+import com.becooni.todoapp.persistence.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -15,7 +15,9 @@ import com.becooni.todoapp.data.source.local.TodoLocalDataSource
 import com.becooni.todoapp.databinding.ActivityMainBinding
 import com.becooni.todoapp.provider.ResourceProviderImpl
 import com.google.android.material.tabs.TabLayout
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val binding: ActivityMainBinding by lazy {

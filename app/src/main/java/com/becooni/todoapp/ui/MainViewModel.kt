@@ -36,7 +36,7 @@ class MainViewModel @Inject constructor(
     val leftText: LiveData<String> = Transformations.map(originList) { list ->
         val activeCount = list.count { !it.completed }
 
-        resourceProvider?.getQuantityString(
+        resourceProvider.getQuantityString(
             R.plurals.numberOfItemsLeft,
             activeCount
         )

@@ -2,15 +2,15 @@ package com.becooni.todoapp.repository
 
 import com.becooni.todoapp.model.Todo
 import io.reactivex.Completable
-import io.reactivex.Flowable
+import io.reactivex.Maybe
 
 interface TodoRepository {
 
-    fun getAll(): Flowable<List<Todo>>
+    fun getAll(): Maybe<List<Todo>>
 
-    fun getActive(): Flowable<List<Todo>>
+    fun getActive(): Maybe<List<Todo>>
 
-    fun getCompleted(): Flowable<List<Todo>>
+    fun getCompleted(): Maybe<List<Todo>>
 
     fun insert(vararg items: Todo): Completable
 

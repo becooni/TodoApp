@@ -1,22 +1,20 @@
 package com.becooni.todoapp.repository
 
 import com.becooni.todoapp.model.Todo
-import com.becooni.todoapp.persistence.TodoDao
-import javax.inject.Inject
+import io.reactivex.Completable
+import io.reactivex.Flowable
 
-class TodoRepository @Inject constructor(
-    private val todoDao: TodoDao
-) : Repository {
+interface TodoRepository {
 
-    override fun getAll() = todoDao.getAll()
+    fun getAll(): Flowable<List<Todo>>
 
-    override fun getActive() = todoDao.getActive()
+    fun getActive(): Flowable<List<Todo>>
 
-    override fun getCompleted() = todoDao.getCompleted()
+    fun getCompleted(): Flowable<List<Todo>>
 
-    override fun insert(vararg items: Todo) = todoDao.insert(*items)
+    fun insert(vararg items: Todo): Completable
 
-    override fun delete(vararg items: Todo) = todoDao.delete(*items)
+    fun delete(vararg items: Todo): Completable
 
-    override fun update(vararg items: Todo) = todoDao.update(*items)
+    fun update(vararg items: Todo): Completable
 }

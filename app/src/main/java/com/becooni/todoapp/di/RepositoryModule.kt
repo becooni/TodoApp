@@ -1,18 +1,20 @@
 package com.becooni.todoapp.di
 
-import com.becooni.todoapp.persistence.TodoDao
+import com.becooni.todoapp.repository.DefaultTodoTodoRepository
 import com.becooni.todoapp.repository.TodoRepository
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
 
 @Module
 @InstallIn(ViewModelComponent::class)
-object RepositoryModule {
+abstract class RepositoryModule {
 
-    @Provides
+    @Binds
     @ViewModelScoped
-    fun provideTodoRepository(todoDao: TodoDao) = TodoRepository(todoDao)
+    abstract fun bindTodoRepository(
+        defaultTodoTodoRepository: DefaultTodoTodoRepository
+    ): TodoRepository
 }
